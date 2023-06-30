@@ -1,7 +1,7 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEditor;
 using UnityEngine.UI;
+using UnityExtensionMethods;
 
 public class MenuController : MonoBehaviour
 {
@@ -38,7 +38,7 @@ public class MenuController : MonoBehaviour
     /// </summary>
     void Play()
     {
-        LoadScene(playScene);
+        playScene.LoadScene();
     }
 
     /// <summary>
@@ -46,7 +46,7 @@ public class MenuController : MonoBehaviour
     /// </summary>
     void Settings()
     {
-        LoadScene(settingsScene);
+        settingsScene.LoadScene();
     }
 
     /// <summary>
@@ -60,21 +60,4 @@ public class MenuController : MonoBehaviour
             Application.Quit();
         #endif
     }
-
-    /// <summary>
-    /// Loads the provided scene
-    /// </summary>
-    /// <param name="scene">Scene to switch to</param>
-    void LoadScene(SceneAsset scene)
-    {
-        try
-        {
-            SceneManager.LoadScene(scene.name);
-        }
-        catch (UnassignedReferenceException)
-        {
-            Debug.LogWarning($"Scene asset has not been assigned");
-        }
-    }
-
 }
