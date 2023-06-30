@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEditor;
 using UnityEngine.UI;
-using TMPro;
 
 public class MenuController : MonoBehaviour
 {
@@ -20,21 +17,22 @@ public class MenuController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        foreach (Transform button in buttonsContainer.transform){
-            switch(button.name){
+        foreach (Transform button in buttonsContainer.transform)
+        {
+            switch (button.name)
+            {
                 case "Play":
                     button.GetComponent<Button>().onClick.AddListener(Play);
                     break;
                 case "Settings":
-                button.GetComponent<Button>().onClick.AddListener(Settings);
+                    button.GetComponent<Button>().onClick.AddListener(Settings);
                     break;
                 default:
-                button.GetComponent<Button>().onClick.AddListener(Exit);
+                    button.GetComponent<Button>().onClick.AddListener(Exit);
                     break;
             }
         }
     }
-
 
     void Play()
     {
@@ -49,20 +47,19 @@ public class MenuController : MonoBehaviour
     void Exit()
     {
         #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
+            EditorApplication.isPlaying = false;
         #else
             Application.Quit();
         #endif
-            
     }
 
     void LoadScene(SceneAsset scene)
     {
         try
         {
-        SceneManager.LoadScene(scene.name);
+            SceneManager.LoadScene(scene.name);
         }
-        catch(UnassignedReferenceException)
+        catch (UnassignedReferenceException)
         {
             Debug.LogWarning($"Scene asset has not been assigned");
         }
