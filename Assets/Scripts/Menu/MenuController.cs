@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEditor;
 using UnityEngine.UI;
 using UnityExtensionMethods;
@@ -14,6 +13,7 @@ public class MenuController : MonoBehaviour
 
     [SerializeField]
     GameObject buttonsContainer;
+
     void Start()
     {
         foreach (Transform button in buttonsContainer.transform)
