@@ -46,6 +46,11 @@ public class ControllerMenuNavigation : MonoBehaviour
         currentButton.Select();
     }
 
+    void SelectButton()
+    {
+        currentButton.onClick.Invoke();
+    }
+
     void Start()
     {
         gamepadEnabled = CheckGamepadConnection();
@@ -72,6 +77,13 @@ public class ControllerMenuNavigation : MonoBehaviour
             else if (gamepad.dpad.up.wasReleasedThisFrame)
             {
                 ChangeSelectedButton(Direction.UP);
+            }
+            else if (gamepad.aButton.wasReleasedThisFrame)
+            {
+                if (currentButton != null)
+                {
+                    SelectButton();
+                }
             }
         }
         else
