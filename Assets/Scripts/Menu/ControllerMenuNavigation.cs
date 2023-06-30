@@ -38,7 +38,7 @@ public class ControllerMenuNavigation : MonoBehaviour
             currentMenuPosition--;
             if (currentMenuPosition < 0)
             {
-                currentMenuPosition = buttons.Length - 1; 
+                currentMenuPosition = buttons.Length - 1;
             }
         }
         else
@@ -46,7 +46,7 @@ public class ControllerMenuNavigation : MonoBehaviour
             currentMenuPosition++;
             if (currentMenuPosition > buttons.Length - 1)
             {
-                currentMenuPosition = 0; 
+                currentMenuPosition = 0;
             }
         }
 
