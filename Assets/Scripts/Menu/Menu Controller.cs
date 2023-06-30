@@ -14,7 +14,6 @@ public class MenuController : MonoBehaviour
     [SerializeField]
     GameObject buttonsContainer;
 
-    // Start is called before the first frame update
     void Start()
     {
         foreach (Transform button in buttonsContainer.transform)
@@ -34,16 +33,25 @@ public class MenuController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Loads the play scene
+    /// </summary>
     void Play()
     {
         LoadScene(playScene);
     }
 
+    /// <summary>
+    /// Loads the settings scene
+    /// </summary>
     void Settings()
     {
         LoadScene(settingsScene);
     }
 
+    /// <summary>
+    /// Exits the game
+    /// </summary>
     void Exit()
     {
         #if UNITY_EDITOR
@@ -53,6 +61,10 @@ public class MenuController : MonoBehaviour
         #endif
     }
 
+    /// <summary>
+    /// Loads the provided scene
+    /// </summary>
+    /// <param name="scene">Scene to switch to</param>
     void LoadScene(SceneAsset scene)
     {
         try

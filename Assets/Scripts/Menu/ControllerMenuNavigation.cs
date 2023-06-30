@@ -16,11 +16,19 @@ public class ControllerMenuNavigation : MonoBehaviour
         DOWN
     }
 
+    /// <summary>
+    /// Checks if there is a gamepad connected
+    /// </summary>
+    /// <returns>Boolean of gamepad connection</returns>
     bool CheckGamepadConnection()
     {
         return Gamepad.current != null;
     }
 
+    /// <summary>
+    /// Changes the menu button based on the direction
+    /// </summary>
+    /// <param name="direction">Direction in which the position should move</param>
     void ChangeSelectedButton(Direction direction)
     {
         Button[] buttons = buttonsContainer.GetComponentsInChildren<Button>();
@@ -46,6 +54,9 @@ public class ControllerMenuNavigation : MonoBehaviour
         currentButton.Select();
     }
 
+    /// <summary>
+    /// Invokes the onclick method of the current selected button
+    /// </summary>
     void SelectButton()
     {
         currentButton.onClick.Invoke();
