@@ -65,11 +65,21 @@ public class ControllerMenuNavigation : MonoBehaviour
     void Start()
     {
         gamepadEnabled = CheckGamepadConnection();
+        InputSystem.onDeviceChange += onDeviceChange;
+    }
+
+    /// <summary>
+    /// Is ran every time the InputSystem detects a device change
+    /// </summary>
+    /// <param name="device">The device being changed too</param>
+    /// <param name="change">What is being changed</param>
+    void onDeviceChange(InputDevice device, InputDeviceChange change)
+    {
+        gamepadEnabled = CheckGamepadConnection();
     }
 
     void Update()
     {
-        gamepadEnabled = CheckGamepadConnection();
         if (gamepadEnabled)
         {
             Gamepad gamepad = Gamepad.current;
