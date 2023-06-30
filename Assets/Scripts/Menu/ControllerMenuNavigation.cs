@@ -2,8 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class ControllerMenuNavigation : MonoBehaviour
-{
+public class ControllerMenuNavigation : MonoBehaviour {
     [SerializeField]
     GameObject buttonsContainer;
 
@@ -20,8 +19,7 @@ public class ControllerMenuNavigation : MonoBehaviour
     /// Checks if there is a gamepad connected
     /// </summary>
     /// <returns>Boolean of gamepad connection</returns>
-    bool CheckGamepadConnection()
-    {
+    bool CheckGamepadConnection() {
         return Gamepad.current != null;
     }
 
@@ -29,23 +27,18 @@ public class ControllerMenuNavigation : MonoBehaviour
     /// Changes the menu button based on the direction
     /// </summary>
     /// <param name="direction">Direction in which the position should move</param>
-    void ChangeSelectedButton(Direction direction)
-    {
+    void ChangeSelectedButton(Direction direction) {
         Button[] buttons = buttonsContainer.GetComponentsInChildren<Button>();
 
-        if (direction == Direction.UP)
-        {
+        if (direction == Direction.UP) {
             currentMenuPosition--;
-            if (currentMenuPosition < 0)
-            {
+            if (currentMenuPosition < 0) {
                 currentMenuPosition = buttons.Length - 1;
             }
         }
-        else
-        {
+        else {
             currentMenuPosition++;
-            if (currentMenuPosition > buttons.Length - 1)
-            {
+            if (currentMenuPosition > buttons.Length - 1) {
                 currentMenuPosition = 0;
             }
         }
@@ -57,13 +50,11 @@ public class ControllerMenuNavigation : MonoBehaviour
     /// <summary>
     /// Invokes the onclick method of the current selected button
     /// </summary>
-    void SelectButton()
-    {
+    void SelectButton() {
         currentButton.onClick.Invoke();
     }
 
-    void Start()
-    {
+    void Start() {
         gamepadEnabled = CheckGamepadConnection();
         InputSystem.onDeviceChange += onDeviceChange;
     }
@@ -73,42 +64,32 @@ public class ControllerMenuNavigation : MonoBehaviour
     /// </summary>
     /// <param name="device">The device being changed too</param>
     /// <param name="change">What is being changed</param>
-    void onDeviceChange(InputDevice device, InputDeviceChange change)
-    {
+    void onDeviceChange(InputDevice device, InputDeviceChange change) {
         gamepadEnabled = CheckGamepadConnection();
     }
 
-    void Update()
-    {
-        if (gamepadEnabled)
-        {
+    void Update() {
+        if (gamepadEnabled) {
             Gamepad gamepad = Gamepad.current;
-            if (gamepad.leftStick.down.wasReleasedThisFrame)
-            {
+            if (gamepad.leftStick.down.wasReleasedThisFrame) {
                 ChangeSelectedButton(Direction.DOWN);
             }
-            else if (gamepad.leftStick.up.wasReleasedThisFrame)
-            {
+            else if (gamepad.leftStick.up.wasReleasedThisFrame) {
                 ChangeSelectedButton(Direction.UP);
             }
-            else if (gamepad.dpad.down.wasReleasedThisFrame)
-            {
+            else if (gamepad.dpad.down.wasReleasedThisFrame) {
                 ChangeSelectedButton(Direction.DOWN);
             }
-            else if (gamepad.dpad.up.wasReleasedThisFrame)
-            {
+            else if (gamepad.dpad.up.wasReleasedThisFrame) {
                 ChangeSelectedButton(Direction.UP);
             }
-            else if (gamepad.aButton.wasReleasedThisFrame)
-            {
-                if (currentButton != null)
-                {
+            else if (gamepad.aButton.wasReleasedThisFrame) {
+                if (currentButton != null) {
                     SelectButton();
                 }
             }
         }
-        else
-        {
+        else {
             currentMenuPosition = 0;
         }
     }

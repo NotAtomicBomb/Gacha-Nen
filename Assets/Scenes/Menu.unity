@@ -1425,7 +1425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6576793e03891aa498a6f5a3b78a9472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playScene: {fileID: 0}
+  playScene: {fileID: 102900000, guid: c016f56a1b8fbeb44b8059beaa3a470c, type: 3}
   settingsScene: {fileID: 0}
   buttonsContainer: {fileID: 1162393947}
 --- !u!114 &1653817230
