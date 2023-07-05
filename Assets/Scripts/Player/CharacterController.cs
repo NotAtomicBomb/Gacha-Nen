@@ -8,12 +8,6 @@ public class CharacterController : MonoBehaviour {
         Vector2 inputVector = new Vector2(0, 0);
 
         // Keyboard
-        if (Input.GetKey(KeyCode.W)) {
-            inputVector.y = +1;            
-        }
-        if (Input.GetKey(KeyCode.S)) { 
-            inputVector.y = -1;            
-        }
         if (Input.GetKey(KeyCode.A)) {
             inputVector.x = -1;
         }
